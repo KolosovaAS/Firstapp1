@@ -84,22 +84,36 @@ namespace ConsoleApp1
             //        }
             //    }
 
-            var arr = new int[] { 5, 6, 9, 1, 2, 3, 4 };
-            int sum = 0;
-            for (int i = 0; i < arr.Length; i++)
+            (string name, string family, string log, int lenlog, bool yespet, double agepet, double ageuser, string[] arrcolor) anketa;
+            for (int k = 0; k < 3; k++)
             {
-                sum += arr[i];
-                
-            }
-            Console.Write(sum);
-                //}
-                //foreach (var item in arr)
-                //{
-                //    Console.Write(item);
-                //}
+                Console.Write("Введите имя: ");
+                anketa.name = Console.ReadLine();
+                Console.Write("Введите фамилию: ");
+                anketa.family = Console.ReadLine();
+                Console.Write("Введите логин: ");
+                anketa.log = Console.ReadLine();
+                anketa.lenlog = anketa.log.Length;
+                Console.WriteLine("Есть ли у вас животные? Да или Нет");
+                var result = Console.ReadLine();
+                if (result == "Да")
+                { anketa.yespet = true; }
+                else
+                { anketa.yespet = false; }
+                Console.WriteLine("Введите возраст пользователя");
+                anketa.ageuser = double.Parse(Console.ReadLine());
+                anketa.arrcolor = new string[3];
 
+                Console.WriteLine("Введите три любимых цвета пользователя");
+                for (int i = 0; i < anketa.arrcolor.Length; i++)
+                {
+                    anketa.arrcolor[i] = Console.ReadLine();
+                }
+
+                Console.ReadKey();
 
             }
+        }
     }
         enum DaysOfWeek : byte
         {
