@@ -113,13 +113,14 @@ namespace ConsoleApp1
             //    Console.ReadKey();
 
             //}
-            var array = GetArrayFromConsole();
+            var array = GetArrayFromConsole(10);
             var sortedarray = SortArray(array);
+            ShowArray(array, true);
 
         }
-        static int[] GetArrayFromConsole()
+        static int[] GetArrayFromConsole(int num=10)
         {
-            var result = new int[5];
+            var result = new int[num];
             
 
             for (int i = 0; i < result.Length; i++)
@@ -153,6 +154,16 @@ namespace ConsoleApp1
             }
             return result;
             }
+        static void ShowArray (int [] array, bool sort=false)
+        {
+            var temp = array;
+            if (sort)
+            {
+                temp = SortArray(array);
+                foreach (var item in temp)
+                { Console.WriteLine(temp); }
+            }
+        }
         static void ShowColor()
         {
             Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
