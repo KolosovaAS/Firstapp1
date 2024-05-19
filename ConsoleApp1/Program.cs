@@ -84,37 +84,110 @@ namespace ConsoleApp1
             //        }
             //    }
 
-            (string name, string family, string log, int lenlog, bool yespet, double agepet, double ageuser, string[] arrcolor) anketa;
-            for (int k = 0; k < 3; k++)
-            {
-                Console.Write("Введите имя: ");
-                anketa.name = Console.ReadLine();
-                Console.Write("Введите фамилию: ");
-                anketa.family = Console.ReadLine();
-                Console.Write("Введите логин: ");
-                anketa.log = Console.ReadLine();
-                anketa.lenlog = anketa.log.Length;
-                Console.WriteLine("Есть ли у вас животные? Да или Нет");
-                var result = Console.ReadLine();
-                if (result == "Да")
-                { anketa.yespet = true; }
-                else
-                { anketa.yespet = false; }
-                Console.WriteLine("Введите возраст пользователя");
-                anketa.ageuser = double.Parse(Console.ReadLine());
-                anketa.arrcolor = new string[3];
+            //(string name, string family, string log, int lenlog, bool yespet, double agepet, double ageuser, string[] arrcolor) anketa;
+            //for (int k = 0; k < 3; k++)
+            //{
+            //    Console.Write("Введите имя: ");
+            //    anketa.name = Console.ReadLine();
+            //    Console.Write("Введите фамилию: ");
+            //    anketa.family = Console.ReadLine();
+            //    Console.Write("Введите логин: ");
+            //    anketa.log = Console.ReadLine();
+            //    anketa.lenlog = anketa.log.Length;
+            //    Console.WriteLine("Есть ли у вас животные? Да или Нет");
+            //    var result = Console.ReadLine();
+            //    if (result == "Да")
+            //    { anketa.yespet = true; }
+            //    else
+            //    { anketa.yespet = false; }
+            //    Console.WriteLine("Введите возраст пользователя");
+            //    anketa.ageuser = double.Parse(Console.ReadLine());
+            //    anketa.arrcolor = new string[3];
 
-                Console.WriteLine("Введите три любимых цвета пользователя");
-                for (int i = 0; i < anketa.arrcolor.Length; i++)
+            //    Console.WriteLine("Введите три любимых цвета пользователя");
+            //    for (int i = 0; i < anketa.arrcolor.Length; i++)
+            //    {
+            //        anketa.arrcolor[i] = Console.ReadLine();
+            //    }
+
+            //    Console.ReadKey();
+
+            //}
+            var array = GetArrayFromConsole();
+            var sortedarray = SortArray(array);
+
+        }
+        static int[] GetArrayFromConsole()
+        {
+            var result = new int[5];
+            
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine("Введите элемент массива номер {0}", i + 1);
+                result[i] = int.Parse(Console.ReadLine());
+            }
+            return result;
+
+        }
+            static int[] SortArray(int [] result)
+            {
+                int temp = 0;
+                for (int k = 0; k < result.Length; k++)
                 {
-                    anketa.arrcolor[i] = Console.ReadLine();
+                    for (int l = k + 1; l < result.Length; l++)
+                    {
+                        if (result[k] > result[l])
+                        {
+                            temp = result[k];
+                            result[k] = result[l];
+                            result[l] = temp;
+                        }
+                    }
                 }
 
-                Console.ReadKey();
+            
+            for (int n = 0; n < result.Length; n++)
+            {
+                Console.WriteLine(result[n]);
+            }
+            return result;
+            }
+        static void ShowColor()
+        {
+            Console.WriteLine("Напишите свой любимый цвет на английском с маленькой буквы");
+            var color = Console.ReadLine();
+
+            switch (color)
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is red!");
+                    break;
+
+                case "green":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is green!");
+                    break;
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("Your color is yellow!");
+                    break;
 
             }
         }
-    }
         enum DaysOfWeek : byte
         {
             Tuesday,
@@ -123,6 +196,9 @@ namespace ConsoleApp1
             Friday
         }
     }
+}
+       
+    
     
    
 
