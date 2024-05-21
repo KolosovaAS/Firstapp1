@@ -113,9 +113,87 @@ namespace ConsoleApp1
             //    Console.ReadKey();
 
             //}
-            var array = GetArrayFromConsole(10);
-            var sortedarray = SortArray(array);
-            ShowArray(array, true);
+            //var array = GetArrayFromConsole(10);
+            //var sortedarray = SortArray(array);
+            //ShowArray(array, true);
+
+            //var somename = "Евгения";
+            //Console.WriteLine(somename);
+            //GetName(ref somename);
+            //Console.WriteLine(somename);
+            //Console.ReadKey();
+
+
+            Console.WriteLine("Напишите что-то");
+            var str = Console.ReadLine();
+
+            Console.WriteLine("Укажите глубину эха");
+            var deep = int.Parse(Console.ReadLine());
+
+            Echo(str, deep);
+
+            
+            //Результат 2 в 3 степени
+            Console.WriteLine(PowerUp(2, 3));
+            
+            Console.ReadKey();
+        }
+        private static int PowerUp(int N, byte pow)
+        {
+            if (pow ==0)
+            { return 1; }
+            else { if (pow == 1)
+                { return N; }
+                else
+                { return N * PowerUp(N, --pow); }
+            }
+        }
+        static void Echo(string saidworld, int deep)
+        {
+            var modif = saidworld;
+
+            if (modif.Length > 2)
+            {
+                modif = modif.Remove(0, 2);
+            }
+            switch (deep)
+            {
+                case 3:
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("..." + modif);
+                    break;
+
+                case 2:
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("..." + modif);
+                    break;
+                case 0:
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("..." + modif);
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("..." + modif);
+                    break;
+
+            }
+            if (deep > 1)
+            {
+                Echo(modif, deep - 1);
+            }
+        }
+        static void GetName(ref string name)
+        {
+            Console.WriteLine("Введите имя");
+            name = Console.ReadLine();
 
         }
         static int[] GetArrayFromConsole(int num=10)
